@@ -21,14 +21,15 @@ pipeline {
             }
         }
         stage('Test'){
-            // agent {
-            //     docker {
-            //         image  'node:18-alpine'
-            //         reuseNode true
-            //     }
-            // }
+            agent {
+                docker {
+                    image  'node:18-alpine'
+                    reuseNode true
+                }
+            }
             steps{
                 sh '''
+                    ls -la
                     echo "Test stage working fine"
                     npm test
                 '''
